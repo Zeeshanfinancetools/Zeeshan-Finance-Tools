@@ -25,7 +25,7 @@
 
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
-        body { background-color: #f8fafc; color: #1e293b; line-height: 1.7; padding-bottom: 90px; }
+        body { background-color: #f8fafc; color: #1e293b; line-height: 1.7; padding-bottom: 40px; }
 
         /* Navigation Bar */
         nav { background: #0f172a; color: #fff; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
@@ -35,18 +35,13 @@
         nav ul li a:hover { color: #38bdf8; }
 
         /* Hero Section */
-        .hero { background: linear-gradient(135deg, #1e293b, #0f172a); color: white; padding: 40px 20px; text-align: center; }
+        .hero { background: linear-gradient(135deg, #1e293b, #0f172a); color: white; padding: 40px 20px; text-align: center; margin-bottom: 30px; }
         .hero h1 { font-size: 32px; margin-bottom: 10px; }
         .hero p { font-size: 16px; color: #94a3b8; max-width: 600px; margin: 0 auto; }
 
-        /* Ad Banners */
-        .ad-banner-top { text-align: center; margin: 20px auto; max-width: 728px; min-height: 90px; background: #e2e8f0; display: flex; align-items: center; justify-content: center; border: 1px dashed #cbd5e1; border-radius: 6px; }
-        .ad-square { text-align: center; margin: 20px auto; max-width: 300px; min-height: 250px; background: #e2e8f0; display: flex; align-items: center; justify-content: center; border: 1px dashed #cbd5e1; border-radius: 6px; }
-        .sidebar-ad { width: 160px; min-height: 600px; background: #e2e8f0; border: 1px dashed #cbd5e1; display: flex; align-items: center; justify-content: center; text-align: center; border-radius: 6px; }
-
         /* Main Container Layout */
-        .main-wrapper { display: flex; justify-content: center; gap: 20px; max-width: 1250px; margin: 20px auto; padding: 0 15px; }
-        .content-area { flex: 1; max-width: 850px; }
+        .main-wrapper { display: flex; justify-content: center; max-width: 900px; margin: 0 auto; padding: 0 15px; }
+        .content-area { flex: 1; width: 100%; }
 
         /* Calculator Card */
         .tabs { display: flex; gap: 10px; margin-bottom: 20px; }
@@ -79,6 +74,10 @@
         .article-section ul { margin-left: 20px; margin-bottom: 20px; color: #475569; }
         .article-section li { margin-bottom: 8px; }
 
+        /* Article Direct Ad Box */
+        .article-promo-box { background: #eff6ff; border: 1px dashed #2563eb; padding: 15px; border-radius: 8px; text-align: center; margin: 20px 0; }
+        .article-promo-box p { color: #1e3a8a; font-weight: 600; margin-bottom: 8px; }
+
         /* FAQ Section */
         .faq-item { margin-bottom: 15px; border-bottom: 1px solid #e2e8f0; padding-bottom: 15px; }
         .faq-item h3 { font-size: 17px; color: #1e293b; margin-bottom: 5px; }
@@ -87,10 +86,7 @@
         footer { background: #0f172a; color: #94a3b8; text-align: center; padding: 25px; margin-top: 40px; font-size: 14px; }
         footer a { color: #38bdf8; text-decoration: none; }
 
-        .sticky-footer-ad { position: fixed; bottom: 0; left: 0; width: 100%; background: #ffffff; text-align: center; border-top: 2px solid #2563eb; padding: 6px 0; z-index: 9999; box-shadow: 0 -4px 10px rgba(0,0,0,0.1); }
-
-        @media (max-width: 950px) {
-            .sidebar-ad { display: none; }
+        @media (max-width: 768px) {
             nav ul { display: none; }
         }
     </style>
@@ -111,21 +107,11 @@
     <!-- Hero Section -->
     <div class="hero">
         <h1>Zeeshan Finance Tools</h1>
-        <p>Calculate your crypto profits, loan EMIs, and investment ROI accurately with our free advanced financial suite at zeeshanfinancetools.com.</p>
-    </div>
-
-    <!-- TOP BANNER AD SLOT -->
-    <div class="ad-banner-top">
-        <span>[ Top Banner Ad - Active ]</span>
+        <p>Calculate your crypto profits, loan EMIs, and investment ROI accurately with our free advanced financial suite at zeeshanfinancetools.shop.</p>
     </div>
 
     <!-- Main Wrapper -->
     <div class="main-wrapper">
-        <!-- LEFT SIDEBAR AD -->
-        <div class="sidebar-ad">
-            <span>[ Left Sidebar Ad - Active ]</span>
-        </div>
-
         <div class="content-area">
             <!-- Calculator Tabs -->
             <div class="tabs">
@@ -142,10 +128,6 @@
                 <div class="form-group"><label>Sell Price ($):</label><input type="number" id="cryptoSell" placeholder="e.g. 60000"></div>
                 <button class="btn-calc" onclick="calcCrypto()">Calculate Crypto Profit</button>
                 <div id="cryptoResult" class="result-box"></div>
-
-                <div class="ad-square">
-                    <span>[ In-Content Square Ad - Active ]</span>
-                </div>
             </div>
 
             <!-- 2. Loan EMI Calculator Card -->
@@ -156,10 +138,6 @@
                 <div class="form-group"><label>Loan Tenure (Years):</label><input type="number" id="loanYears" placeholder="e.g. 5"></div>
                 <button class="btn-calc" onclick="calcLoan()">Calculate Monthly Payment</button>
                 <div id="loanResult" class="result-box"></div>
-
-                <div class="ad-square">
-                    <span>[ In-Content Square Ad - Active ]</span>
-                </div>
             </div>
 
             <!-- 3. ROI Calculator Card -->
@@ -169,19 +147,28 @@
                 <div class="form-group"><label>Final Value Amount ($):</label><input type="number" id="roiFinal" placeholder="e.g. 8500"></div>
                 <button class="btn-calc" onclick="calcROI()">Calculate ROI Percentage</button>
                 <div id="roiResult" class="result-box"></div>
-
-                <div class="ad-square">
-                    <span>[ In-Content Square Ad - Active ]</span>
-                </div>
             </div>
 
             <!-- Detailed Articles & Guides Section -->
             <div class="article-section" id="articles">
-                <h2>How to Accurately Calculate Crypto Investment Returns</h2>
+                <!-- Article 1 -->
+                <h2>1. How to Accurately Calculate Crypto Investment Returns</h2>
                 <p>Cryptocurrency markets are known for high volatility. When managing digital assets like Bitcoin (BTC) or Ethereum (ETH), knowing your exact profit margins, exit points, and break-even points is essential for long-term growth.</p>
                 <p>Our Crypto Profit Calculator considers your initial capital, buy execution prices, and final sell targets to deliver real-time net return figures. Before entering trades, traders often utilize strategic formulas to mitigate financial risk.</p>
 
-                <h2>Understanding Loan Interest Rates & Monthly EMI Calculations</h2>
+                <!-- In-Article Direct Link Promo 1 -->
+                <div class="article-promo-box">
+                    <p>⚡ Looking for High-Yield Crypto Trading Signals & Bonuses?</p>
+                    <a href="https://uplcm.com/4/12072933" target="_blank" class="direct-ad-btn">Explore Special Crypto Offers Now</a>
+                </div>
+
+                <!-- Article 2 -->
+                <h2>2. Smart Strategies for Managing Crypto Portfolio Volatility</h2>
+                <p>Investing in digital currencies requires a balance between aggressive profit goals and defensive risk controls. Dollar-Cost Averaging (DCA) is one of the safest strategies where investors allocate fixed amounts at scheduled intervals regardless of market prices.</p>
+                <p>By using real-time calculation tools, crypto investors can set precise stop-loss and take-profit targets, ensuring emotional discipline during market rallies and sudden corrections.</p>
+
+                <!-- Article 3 -->
+                <h2>3. Understanding Loan Interest Rates & Monthly EMI Calculations</h2>
                 <p>Equated Monthly Installments (EMI) allow borrowers to structure fixed payments toward outstanding mortgage or personal loans over time. The calculation involves three key components:</p>
                 <ul>
                     <li><strong>Principal Amount:</strong> The total loan amount borrowed from financial institutions.</li>
@@ -189,6 +176,16 @@
                     <li><strong>Loan Term:</strong> Duration in months or years over which payments are spread out.</li>
                 </ul>
                 <p>Using an online EMI calculator helps budget personal finances effectively without unexpected interest compounding surprises.</p>
+
+                <!-- In-Article Direct Link Promo 2 -->
+                <div class="article-promo-box">
+                    <p>💰 Need Fast Personal Loans & Low Interest Rate Deals?</p>
+                    <a href="https://uplcm.com/4/12072933" target="_blank" class="direct-ad-btn">Check Financial Offers & Eligibility</a>
+                </div>
+
+                <!-- Article 4 -->
+                <h2>4. Maximizing Long-Term Wealth Through ROI Analysis</h2>
+                <p>Return on Investment (ROI) is a primary metric used by modern investors to evaluate the efficiency and profitability of different asset classes. Whether you are comparing traditional stock index funds, real estate assets, or decentralised finance (DeFi) liquidity pools, calculating ROI gives a clear comparative picture.</p>
 
                 <h2>Frequently Asked Questions (FAQs)</h2>
                 <div class="faq-item">
@@ -201,22 +198,12 @@
                 </div>
             </div>
         </div>
-
-        <!-- RIGHT SIDEBAR AD -->
-        <div class="sidebar-ad">
-            <span>[ Right Sidebar Ad - Active ]</span>
-        </div>
     </div>
 
     <!-- Footer -->
     <footer>
-        <p>&copy; 2026 zeeshanfinancetools.com. All Rights Reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+        <p>&copy; 2026 zeeshanfinancetools.shop. All Rights Reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
     </footer>
-
-    <!-- STICKY BOTTOM ANCHOR AD -->
-    <div class="sticky-footer-ad">
-        <div style="font-size: 12px; color: #666;">[ Sticky Bottom Ad Slot - Active ]</div>
-    </div>
 
     <script>
         function switchTab(tabId) {

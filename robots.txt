@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://zeeshanfinancetools.shop/sitemap.xml
